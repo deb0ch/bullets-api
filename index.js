@@ -12,6 +12,7 @@ const server = Hapi.Server({
         log: '*',
         request: '*',
     },
+    routes: {cors: true},
 });
 
 async function main() {
