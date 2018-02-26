@@ -2,9 +2,7 @@
 import Mongoose from 'mongoose';
 
 
-const Schema = Mongoose.Schema;
-
-const TaskSchema = new Schema({
+const TaskSchema = new Mongoose.Schema({
     text: String,
     parent: Mongoose.Schema.Types.ObjectId,
     checked: Boolean,

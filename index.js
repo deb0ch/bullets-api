@@ -1,11 +1,11 @@
 
-import Hapi from 'hapi';
+import hapi                          from 'hapi';
 
 import dbPlugin from './dbPlugin';
 import Routes   from './routes';
 
 
-const server = Hapi.Server({
+const server = hapi.Server({
     host: 'localhost',
     port: 3000,
     debug: {
