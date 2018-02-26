@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec babel-node index.js"
+    "start": "env BABEL_DISABLE_CACHE=1 nodemon --exec babel-node index.js"
   },
   "license": "MIT",
   "babel": {
@@ -21,6 +21,7 @@
     "babel-plugin-inline-import": "^2.0.6",
     "babel-preset-env": "^1.6.1",
     "graphql": "^0.12",
+    "graphql-iso-date": "^3.5.0",
     "graphql-tools": "^2.21.0",
     "hapi": "^17.2.0",
     "mongoose": "^5.0.2",
