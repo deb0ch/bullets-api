@@ -25,36 +25,37 @@ const executableSchema = makeExecutableSchema({
     resolvers: resolvers({Task}),
 });
 
+const plugins = [
+    {
+        plugin: dbPlugin,
+        options: {
+            uri: 'mongodb://localhost/bullets-api-test',
+        }
+    },
+    {
+        plugin: graphqlHapi,
+        options: {
+            path: '/graphql',
+            graphqlOptions: () => ({
+                pretty: true,
+                schema: executableSchema,
+            }),
+        },
+    },
+    {
+        plugin: graphiqlHapi,
+        options: {
+            path: '/graphiql',
+            graphiqlOptions: {
+                endpointURL: '/graphql',
+            },
+        },
+    },
+];
+
 async function main() {
     try {
         server.route(routes);
-        const plugins = [
-            {
-                plugin: dbPlugin,
-                options: {
-                    uri: 'mongodb://localhost/bullets-api-test',
-                }
-            },
-            {
-                plugin: graphqlHapi,
-                options: {
-                    path: '/graphql',
-                    graphqlOptions: () => ({
-                        pretty: true,
-                        schema: executableSchema,
-                    }),
-                },
-            },
-            {
-                plugin: graphiqlHapi,
-                options: {
-                    path: '/graphiql',
-                    graphiqlOptions: {
-                        endpointURL: '/graphql',
-                    },
-                },
-            },
-        ];
         await server.register(plugins);
         await server.start();
         console.log(`Server running at: ${server.info.uri}`);
