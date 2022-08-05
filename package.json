@@ -24,7 +24,7 @@
     "graphql-iso-date": "^3.5.0",
     "graphql-tools": "^2.21.0",
     "hapi": "^17.2.0",
-    "mongoose": "^5.0.2",
+    "mongoose": "^5.7.5",
     "nodemon": "^1.14.11"
   }
 }
